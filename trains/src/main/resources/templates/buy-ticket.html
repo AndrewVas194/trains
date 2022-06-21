@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3/3843.png" sizes="16x16">
+</head>
+<body>
+<table style="border-radius:5px;" th:each="element : ${trainId}" class="product-item alert alert-info mt-2">
+    <tr>
+        <td class="nameTr"><h3 th:text="'Название поезда: ' + ${element.trainsName}"/></td>
+        <td class="nameTr"></td>
+    </tr>
+    <tr>
+        <td class="td_send"><p th:text="'Город отправления: '+${element.sendfrom}"/></td>
+        <td class="td_send"><p th:text="'Город прибытия: '+${element.tosend}"/></td>
+    </tr>
+    <tr>
+        <td style="border-style:outset; border:3px;"><p th:text="'Время отхода поезда: '+${element.time_to_send}"/></td>
+    </tr>
+
+    <tr>
+        <td style="border-style:outset; border:3px;"><p th:text="'Количество свободных мест: '+${element.count_site_places}"/></td>
+    </tr>
+
+    <tr>
+        <td><p th:text="'Цена билета:'+${element.price}+'$'"/></td>
+        <td  align="right"><span class="price"><a href="/train/list" class="button">Вернуться</a></span></td>
+    </tr>
+
+
+
+</table>
+</body>
+</html>

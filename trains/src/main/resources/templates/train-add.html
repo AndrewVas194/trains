@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3/3843.png" sizes="16x16">
+</head>
+<body>
+<header th:insert="basicpages/header::header"></header>
+<div class="container mt-5 mb-5">
+    <h1 align="center">Добавление поезда</h1>
+    <form action="/train/add" method="post">
+        <input type="text" name="trainsName" id="trainsName" placeholder="Название поезда" class="form-control"required><br>
+        <select type="text" name="sendfrom" id="sendfrom" placeholder="Точка отправки" class="form-control" required>
+            <!--<option hidden>Откуда едем</option>-->
+            <option value="Grodno">Гродно</option>
+            <option value="Brest">Брест</option>
+            <option value="Baranovichi">Барановичи</option>
+        </select><br>
+        <select type="text" name="tosend" id="tosend" placeholder="Место прибытия" class="form-control" required>
+            <!--<option hidden>Куда отправимся</option>-->
+            <option value="Minsk">Минск</option>
+            <option value="Berlin">Берлин</option>
+            <option value="Warshava">Варшава</option>
+            <option value="Vilnus">Вильнюс</option>
+            <option value="Riga">Рига</option>
+            <option value="Kiev">Киев</option>
+        </select><br>
+        <input type="datetime-local" name="time_to_send" id="time_to_send" min="2022-05-11T9:00" max="2022-06-11T9:00" placeholder="Время отправки" class="form-control" required><br>
+        <input type="text" name="count_site_places" min="1" id="count_site_places" placeholder="Количество мест" class="form-control" required><br>
+        <input type="text" name="price" id="price" placeholder="цена билета" class="form-control" required><br>
+        <div align="left">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <http auto-config="true">
+                <intercept-url pattern="/train/add" access="isAuthenticated" method="GET" />
+                <intercept-url pattern="/train/add" access="hasRole('ADMIN')" method="POST" />
+            </http>
+            <button type="submit" class="btn btn-success">Добавить поезд</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

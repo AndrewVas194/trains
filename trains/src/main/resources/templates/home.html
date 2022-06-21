@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3/3843.png" sizes="16x16">
+    <style>
+    .bcg{
+    background: url(https://cdn-blob.austria.info/cms-uploads-prod/default/0001/05/thumb_4396_default_header_big.jpeg) no-repeat;
+    width:1536px;
+    height:550px;
+    }
+    .welcome{
+    top:45px;
+    font-style:italic;
+    text-align:center;
+    }
+    </style>
+</head>
+<body>
+<header th:insert="basicpages/header::header"></header>
+<div class="bcg"><h1 class="welcome">Добро пожаловать</h1></div>
+
+</body>
+</html>
